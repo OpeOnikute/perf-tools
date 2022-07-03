@@ -6,3 +6,28 @@ Use the image as a base and install whatever tool you want to triage with perf. 
 
 ## Usage
 
+- Build the image
+    ```
+    docker run --name perf-tools --privileged -p 8080:80 -d opeo/perftools
+    ```
+
+- Create a bash shell
+    ```
+    docker exec -it perf-tools bash
+    ```
+
+- Run perf commands
+    ```
+    root@5851e5014e1d:/var/www/app# perf probe -x /usr/sbin/nginx -F
+    ASN1_GENERALIZEDTIME_print@plt
+    ASN1_TIME_print@plt
+    ASN1_d2i_bio@plt
+    BIO_ctrl@plt
+    BIO_free@plt
+    BIO_int_ctrl@plt
+    BIO_new@plt
+    BIO_new_file@plt
+    BIO_new_mem_buf@plt
+    BIO_read@plt
+    ...
+    ```
